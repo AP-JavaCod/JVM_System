@@ -26,5 +26,12 @@ void setFieldFloat(JNIEnv*, jobject, jfloat, const char*);
 void setFieldDouble(JNIEnv*, jobject, jdouble, const char*);
 void setFieldChar(JNIEnv*, jobject, jchar, const char*);
 
+jmethodID getMethodID(JNIEnv*, jobject, const char*, const char*);
+
+jobject createJavaClass(JNIEnv*, jclass, const char*, ...);
+jobject createJavaClass(JNIEnv*, jobject, const char*, ...);
+jobject createJavaClass(JNIEnv*, const char*, const char*, ...);
+
+jobject createJavaClassV(JNIEnv*, jclass, const char*, va_list);
 
 #endif

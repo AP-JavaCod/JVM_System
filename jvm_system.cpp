@@ -104,3 +104,44 @@ void setFieldChar(JNIEnv* env, jobject obj, jchar value, const char* nameField){
 	jfieldID id = getFieldID(env, obj, nameField, "C");
 	env->SetCharField(obj, id, value);
 }
+
+jmethodID getMethodID(JNIEnv* env, jobject obj, const char* nameMethod, const char* signature){
+	jclass classJ = env->GetObjectClass(obj);
+	jmethodID id = env->GetMethodID(classJ, nameMethod, signature);
+	return id;
+}
+
+jobject createJavaClass(JNIEnv* env, jclass classJ, const char* signature, ...){
+	va_list arg;
+	jobject res;
+	va_start(arg, signature);
+	res = createJavaClassV(env, classJ, signature, arg);
+	va_end(arg);
+	return res;
+}
+
+jobject createJavaClass(JNIEnv* env, jobject obj, const char* signature, ...){
+	va_list arg;
+	jclass classJ = env->GetObjectClass(obj);
+	jobject res;
+	va_start(arg, signature);
+	res = createJavaClassV(env, classJ, signature, arg);
+	va_end(arg);
+	return res;
+}
+
+jobject createJavaClass(JNIEnv* env, const char* nameClass, const char* signature, ...){
+	va_list arg;
+	jclass classJ = env->FindClass(nameClass);
+	jobject res;
+	va_start(arg, signature);
+	res = createJavaClassV(env, classJ, signature, arg);
+	va_end(arg);
+	return res;
+}
+
+jobject createJavaClassV(JNIEnv* env, jclass classJ, const char* signature, va_list args){
+	jmethodID id = env->GetMethodID(classJ, "<init>", signature);
+	jobject res = env->NewObjectV(classJ, id, args);
+	return res;
+}
