@@ -6,7 +6,81 @@
 
 namespace field {
 
-	jfieldID getFieldID(JNIEnv*, jobject, const char*, const char*);
+	//Static Field
+
+	jobject getStaticObject(JNIEnv*, jclass, const char*, const char*);
+	jobject getStaticObject(JNIEnv*, jobject, const char*, const char*);
+	jobject getStaticObject(JNIEnv*, const char*, const char*, const char*);
+
+	jboolean getStaticBoolean(JNIEnv*, jclass, const char*);
+	jboolean getStaticBoolean(JNIEnv*, jobject, const char*);
+	jboolean getStaticBoolean(JNIEnv*, const char*, const char*);
+
+	jbyte getStaticByte(JNIEnv*, jclass, const char*);
+	jbyte getStaticByte(JNIEnv*, jobject, const char*);
+	jbyte getStaticByte(JNIEnv*, const char*, const char*);
+
+	jshort getStaticShort(JNIEnv*, jclass, const char*);
+	jshort getStaticShort(JNIEnv*, jobject, const char*);
+	jshort getStaticShort(JNIEnv*, const char*, const char*);
+
+	jint getStaticInt(JNIEnv*, jclass, const char*);
+	jint getStaticInt(JNIEnv*, jobject, const char*);
+	jint getStaticInt(JNIEnv*, const char*, const char*);
+
+	jlong getStaticLong(JNIEnv*, jclass, const char*);
+	jlong getStaticLong(JNIEnv*, jobject, const char*);
+	jlong getStaticLong(JNIEnv*, const char*, const char*);
+
+	jfloat getStaticFloat(JNIEnv*, jclass, const char*);
+	jfloat getStaticFloat(JNIEnv*, jobject, const char*);
+	jfloat getStaticFloat(JNIEnv*, const char*, const char*);
+
+	jdouble getStaticDouble(JNIEnv*, jclass, const char*);
+	jdouble getStaticDouble(JNIEnv*, jobject, const char*);
+	jdouble getStaticDouble(JNIEnv*, const char*, const char*);
+
+	jchar getStaticChar(JNIEnv*, jclass, const char*);
+	jchar getStaticChar(JNIEnv*, jobject, const char*);
+	jchar getStaticChar(JNIEnv*, const char*, const char*);
+
+	void setStaticObject(JNIEnv*, jclass, jobject, const char*, const char*);
+	void setStaticObject(JNIEnv*, jobject, jobject, const char*, const char*);
+	void setStaticObject(JNIEnv*, const char*, jobject, const char*, const char*);
+
+	void setStaticBoolean(JNIEnv*, jclass, jboolean, const char*);
+	void setStaticBoolean(JNIEnv*, jobject, jboolean, const char*);
+	void setStaticBoolean(JNIEnv*, const char*, jboolean, const char*);
+
+	void setStaticByte(JNIEnv*, jclass, jbyte, const char*);
+	void setStaticByte(JNIEnv*, jobject, jbyte, const char*);
+	void setStaticByte(JNIEnv*, const char*, jbyte, const char*);
+
+	void setStaticShort(JNIEnv*, jclass, jshort, const char*);
+	void setStaticShort(JNIEnv*, jobject, jshort, const char*);
+	void setStaticShort(JNIEnv*, const char*, jshort, const char*);
+
+	void setStaticInt(JNIEnv*, jclass, jint, const char*);
+	void setStaticInt(JNIEnv*, jobject, jint, const char*);
+	void setStaticInt(JNIEnv*, const char*, jint, const char*);
+
+	void setStaticLong(JNIEnv*, jclass, jlong, const char*);
+	void setStaticLong(JNIEnv*, jobject, jlong, const char*);
+	void setStaticLong(JNIEnv*, const char*, jlong, const char*);
+
+	void setStaticFloat(JNIEnv*, jclass, jfloat, const char*);
+	void setStaticFloat(JNIEnv*, jobject, jfloat, const char*);
+	void setStaticFloat(JNIEnv*, const char*, jfloat, const char*);
+
+	void setStaticDouble(JNIEnv*, jclass, jdouble, const char*);
+	void setStaticDouble(JNIEnv*, jobject, jdouble, const char*);
+	void setStaticDouble(JNIEnv*, const char*, jdouble, const char*);
+
+	void setStaticChar(JNIEnv*, jclass, jchar, const char*);
+	void setStaticChar(JNIEnv*, jobject, jchar, const char*);
+	void setStaticChar(JNIEnv*, const char*, jchar, const char*);
+
+	//Not-static field
 
 	jobject getObject(JNIEnv*, jobject, const char*, const char*);
 	jboolean getBoolean(JNIEnv*, jobject, const char*);
@@ -31,6 +105,8 @@ namespace field {
 }
 
 namespace method {
+
+	//Static method
 
 	void callStaticVoidMethod(JNIEnv*, jclass, const char*, const char* ...);
 	void callStaticVoidMethod(JNIEnv*, jobject, const char*, const char*, ...);
@@ -81,6 +157,8 @@ namespace method {
 	jchar callStaticCharMethod(JNIEnv*, jobject, const char*, const char*, ...);
 	jchar callStaticCharMethod(JNIEnv*, const char*, const char*, const char*, ...);
 	jchar callStaticCharMethodV(JNIEnv*, jclass, const char*, const char*, va_list);
+
+	//Not-static method
 
 	void callVoidMethod(JNIEnv*, jobject, const char*, const char*, ...);
 	void callVoidMethodV(JNIEnv*, jobject, const char*, const char*, va_list);
