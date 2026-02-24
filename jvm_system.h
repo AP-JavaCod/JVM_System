@@ -1,8 +1,36 @@
 #pragma once
 #include <jni.h>
+#include <exception>
 
 #ifndef JVM_SYSTEM_H_
 #define JVM_SYSTEM_H_
+
+namespace exception{
+
+	extern const char* ClassCastException;
+	extern const char* NullPointerException;
+	extern const char* ArrayIndexOutOfBoundsException;
+	extern const char* NoSuchFieldException;
+	extern const char* NoSuchMethodException;
+
+	class JavaException : public std::exception{
+
+	public:
+
+		JavaException(const char*);
+		JavaException(const char*, const char*);
+
+		const char* what() const _GLIBCXX_TXN_SAFE_DYN _GLIBCXX_NOTHROW override;
+		jint throwJavaException(JNIEnv*) const;
+
+	private:
+
+		const char* nameClassException;
+		const char* message;
+
+	};
+
+}
 
 namespace field {
 
